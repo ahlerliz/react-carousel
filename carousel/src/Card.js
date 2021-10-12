@@ -1,6 +1,7 @@
 import React from "react";
 import "./Card.css";
 
+
 /** Card: displays image.
  * 
  * Props:
