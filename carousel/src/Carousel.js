@@ -21,19 +21,31 @@ import Card from "./Card";
   const total = photos.length;
 
   //Increments currCardIdx state by 1
-  // FIX ME: never checking that currCard < total cards
   function goForward() {
     setCurrCardIdx(currCardIdx + 1);
   }
 
-  // FIX ME - we need a go backwards function for the left button
+  //Decrements currCardIdx state by 1
+  function goBackward() {
+    setCurrCardIdx(currCardIdx - 1);
+  }
+
+  // mirror what they did in results in lecture before rendering i
+  //const isAtBeginning = currCardIdx === 0 ? 
+  //const isAtEnd = currCardIdx === total - 1 ?
+  // mirror what is done with result in demo/nineteen/src/NineteenGame.js 
+  // from the React Testing lecture 
+
   return (
     <div className="Carousel">
       <h1>{title}</h1>
       <div className="Carousel-main">
         <i
           className="fas fa-chevron-circle-left fa-2x"
-          onClick={goForward}
+          onClick={goBackward}
+          style={(currCardIdx === 0) 
+                  ? {"display": "none"}
+                  : {"display": "inline"}}
         />
         <Card
           caption={currCard.caption}
@@ -44,6 +56,9 @@ import Card from "./Card";
         <i
           className="fas fa-chevron-circle-right fa-2x"
           onClick={goForward}
+          style={(currCardIdx + 1 === total) 
+                    ? {"display": "none"}
+                    : {"display": "inline"}}
         />
       </div>
     </div>
